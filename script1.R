@@ -4,6 +4,8 @@ library(tidyverse)
 
 unique(GDP$region)
 
+# testes
+
 GDP %>% 
   filter(region == "")
 
@@ -12,7 +14,15 @@ vazio <- GDP %>%
 
 unique(vazio$wb_region)
 
+# fim de testes
+
 europe <- GDP %>% 
   filter(region == "Central and Eastern Europe" | region == "Western Europe")
 
-unique(europe$country) # 32 países, 10 não são da UE.
+saveRDS(europe, "GDP_europe.rds")
+
+
+
+
+
+
