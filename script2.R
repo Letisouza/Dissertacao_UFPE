@@ -19,6 +19,8 @@ gdp_europe_selected <- gdp_europe %>%
 
 unique(gdp_europe_selected$country)
 
+saveRDS(gdp_europe_selected, "gdp_europe_selected.rds")
+
 # UK stays in the EU until 2020.
 
 u <- gdp_europe_selected %>% 
