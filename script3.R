@@ -1,5 +1,8 @@
 library(tidyverse)
 
+# Cleaning and converting base -----------------------------------------------------------------------
+
+
 gdp <- readRDS("gdp_europe_selected.rds")
 
 # transforming to a data.frame
@@ -31,6 +34,11 @@ gdp_europe_changed <- df2 %>%
          "totalaverage" = V10)
 
 saveRDS(gdp_europe_changed, "gdp_europe_changed.rds")
+
+
+# Exploring --------------------------------------------
+
+gdp_europe <- readRDS("gdp_europe_changed.rds")
 
 per_country <- gdp_europe_changed %>% 
   group_by(country, leader, yearend, lr) %>% 
