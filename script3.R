@@ -47,10 +47,10 @@ per_country <- gdp_europe %>%
 # Estonia, Finland, Ireland, Slovenia and Spain don't have data up to 2019 or close enough (same leader analyzed few years before)
 
 # EU: Austria, Bulgaria, Croatia, Czechia, France, Germany,Greece,
-# Hungary, Italy, Latvia, Lithuania, Netherlands, Norway, Poland, Slovakia,
+# Hungary, Italy, Latvia, Lithuania, Netherlands, Poland, Slovakia,
 # Romania, Sweden.
 
-# Lacking: Belgium, Cyprus, Denmark, Luxembourg, Malta - no data -, Estonia, Finland, 
+# Lacking: Belgium, Cyprus, Denmark, Luxembourg, Malta, Portugal - no data -, Estonia, Finland, 
 # Ireland, Slovenia and Spain - not enough data.
 
 gdp_europe_final <- gdp_europe %>% 
