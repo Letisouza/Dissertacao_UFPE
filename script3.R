@@ -48,7 +48,7 @@ per_country <- gdp_europe %>%
 
 # EU: Austria, Bulgaria, Croatia, Czechia, France, Germany,Greece,
 # Hungary, Italy, Latvia, Lithuania, Netherlands, Poland, Slovakia,
-# Romania, Sweden.
+# Romania, Sweden. + UK
 
 # Lacking: Belgium, Cyprus, Denmark, Luxembourg, Malta, Portugal - no data -, Estonia, Finland, 
 # Ireland, Slovenia and Spain - not enough data.
