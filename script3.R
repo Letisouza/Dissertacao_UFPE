@@ -40,7 +40,21 @@ saveRDS(gdp_europe_changed, "gdp_europe_changed.rds")
 
 gdp_europe <- readRDS("gdp_europe_changed.rds")
 
-per_country <- gdp_europe_changed %>% 
+per_country <- gdp_europe %>% 
   group_by(country, leader, yearend, lr) %>% 
-  summarise(unique(totalaverage))
+  summarise(unique(totalaverage)) 
  
+# Estonia, Finland, Ireland, Slovenia and Spain don't have data up to 2019 or close enough (same leader analyzed few years before)
+
+# EU: Austria, Bulgaria, Croatia, Czechia, France, Germany,Greece,
+# Hungary, Italy, Latvia, Lithuania, Netherlands, Norway, Poland, Slovakia,
+# Romania, Sweden.
+
+# Lacking: Belgium, Cyprus, Denmark, Luxembourg, Malta - no data -, Estonia, Finland, 
+# Ireland, Slovenia and Spain - not enough data.
+
+gdp_europe_final <- gdp_europe %>% 
+  select(country, leader, party, lr, president, term, yearbegin, yearend, speechtype, totalaverage) %>% 
+  filter(!country %in% c("Estonia","Finland", "Ireland","Slovenia", "Spain"))
+
+saveRDS(gdp_europe_final, "gdp_europe_final.rds")
