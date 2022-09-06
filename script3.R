@@ -13,9 +13,10 @@ df1 <- data.frame(matrix(unlist(gdp), nrow=length(gdp), byrow=T),stringsAsFactor
 
 df2 <- as.data.frame(t(df1))
 
-# changing the type of the yearend variable to numeric
+# changing the type of the yearend and totalaverage variable to numeric
 
 df2$V8 <- as.numeric(df2$V8)
+df2$V10 <- as.numeric(df2$V10)
 
 # changing the rows with "present" to 2022, even tho it doesn't mean this year is really 
 # the end of the term. 
