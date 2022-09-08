@@ -24,8 +24,7 @@ saveRDS(base, "base.rds")
 
 base <- readRDS("base.rds")  
 
-# cases: Hungary and Czechia
-# titulo: Relação entre Populismo e Infrações a Leis sobre Migração na UE
+# EXCLUIR titulo: Relação entre Populismo e Infrações a Leis sobre Migração na UE
 
 g1 <- ggplot(base,
              aes(formalnotice, totalaverage, label=country)) +
@@ -43,3 +42,7 @@ g1 <- ggplot(base,
 g1
 
 ggsave(g1, filename = "g1.jpeg", width = 8, height = 5)
+
+# cases: Hungary and Czechia
+
+
