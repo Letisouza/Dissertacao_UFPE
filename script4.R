@@ -22,22 +22,24 @@ base <- cbind(base, formalnotice)
 
 saveRDS(base, "base.rds")
 
-------
-  
-  base <- readRDS("base.rds")  
+base <- readRDS("base.rds")  
 
 # cases: Hungary and Czechia
+# titulo: Relação entre Populismo e Infrações a Leis sobre Migração na UE
 
 g1 <- ggplot(base,
              aes(formalnotice, totalaverage, label=country)) +
   geom_jitter(width = 0.08)+
-  theme_classic()+
-  scale_y_continuous(breaks=seq(0, 1, by = .10)) +
+  theme_classic() +
+  scale_y_continuous(breaks=seq(0, 1.2, by = .10)) +
   scale_x_continuous(breaks=seq(0, 15, by = 2)) +
-  labs(title="Relação entre Populismo e Infrações a \nLeis sobre Migração na UE", 
-       y="Nível de Populismo", 
+  geom_text(aes(label=ifelse(totalaverage > 0.8 | formalnotice > 10, country,'')),size = 3, hjust=0.65,vjust=-0.4) +
+  labs(y="Nível de Populismo", 
        x="Procedimentos de Infração",
        caption = "Fonte: GDP e UE") +
-  geom_text(aes(label=ifelse(totalaverage > 0.8 | formalnotice > 10, country,'')),hjust=0.6,vjust=-0.4)
+  theme(plot.title = element_text(size = 13),
+        axis.title = element_text(size = 10))
 
 g1
+
+ggsave(g1, filename = "g1.jpeg", width = 8, height = 5)
