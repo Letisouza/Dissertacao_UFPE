@@ -34,7 +34,7 @@ g1 <- ggplot(base,
   scale_x_continuous(breaks=seq(0, 15, by = 2)) +
   geom_text(aes(label=ifelse(totalaverage > 0.8 | formalnotice > 10, country,'')),size = 3, hjust=0.65,vjust=-0.4) +
   labs(y="Nível de Populismo", 
-       x="Procedimentos de Infração",
+       x="Processos por Infração",
        caption = "Fonte: GDP e UE") +
   theme(plot.title = element_text(size = 13),
         axis.title = element_text(size = 10))
