@@ -6,7 +6,7 @@ gdp <- readRDS("gdp_europe_final.rds")
 per_country <- gdp %>%
   filter(!leader %in% c("Petr Necas","Bohuslav Sobotka", "Andrius Kubilius", "Algirdas Butkevicius", "Beate Szydlo", 
                         "Donald Tusk", "Emil Boc", "Viktor Ponta", "Dacian Ciolos")) %>% 
-  group_by(country, leader,yearbegin, yearend, lr) %>% 
+  group_by(country, leader,yearbegin, yearend, lr, party) %>% 
   summarise(totalaverage = (unique(totalaverage))) %>% 
   arrange(country, yearbegin) %>% 
   filter(yearend >= 2012,
