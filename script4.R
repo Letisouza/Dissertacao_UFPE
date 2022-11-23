@@ -92,13 +92,13 @@ migration2 <- df2 %>%
          "refugee_stock" = V6,
          "refugee_stock_migr_perc" = V7)
 
-saveRDS(migration2, "migration2.rds")
+saveRDS(migration2, "migration.rds")
 
 ############
 
 # graph: migration
 
-migration <- readRDS("migration2.rds")
+migration <- readRDS("migration.rds")
 
 theme_set(theme_bw())
 
