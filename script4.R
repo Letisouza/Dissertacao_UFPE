@@ -44,9 +44,9 @@ g1 <- ggplot(base,
    #                                 ifelse(totalaverage == 1.000 & formalnotice == 2 & country == "Czechia", "R. Tcheca 1",
     #                                       ifelse(totalaverage == 0.150 & formalnotice == 13 & country == "Czechia","R. Tcheca 2",''))))),size = 3.5, hjust=0.65,vjust=-0.4) +
   geom_text(aes(label = ref), size = 2.8, hjust=0.65,vjust=-0.4) +
-  labs(y="Nível de Populismo", 
-       x="Processos por Infração",
-       caption = "Fonte: GPD e UE") +
+  labs(y="Level of Populism", 
+       x="Infringement Procedure",
+       caption = "Source: GPD and EU") +
   theme(axis.title = element_text(size = 10.5),
         axis.text = element_text(size = 9))
 
