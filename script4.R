@@ -33,7 +33,7 @@ base <- readRDS("base.rds")
 theme_set(theme_bw())
 
 g1 <- ggplot(base,
-             aes(formalnotice, totalaverage, label=country)) +
+             aes(formalnotice, totalaverage)) +
   geom_jitter(width = 0.14)+
   theme(panel.grid = element_blank()) +
   # theme_classic() +
@@ -114,7 +114,7 @@ g2 <- ggplot(migration, aes(ref, migr_stock_pop_perc, fill = year)) +
   theme(axis.title = element_text(size = 10.5),
         axis.text = element_text(size = 9)) +
   scale_fill_manual(breaks = c("2015", "2019", "2020"),
-                    values = c("aquamarine2", "darkgoldenrod1", "bisque4"))
+                    values = c("blue3", "darkgoldenrod1", "bisque4"))
 
 g2
 
@@ -132,15 +132,44 @@ g3 <- ggplot(migration, aes(ref, refugee_stock_migr_perc, fill = year)) +
   theme(axis.title = element_text(size = 10.5),
         axis.text = element_text(size = 9)) +
   scale_fill_manual(breaks = c("2015", "2019", "2020"),
-                    values = c("aquamarine2", "darkgoldenrod1", "bisque4"))
+                    values = c("blue3", "darkgoldenrod1", "bisque4"))
 
 g3
 
 ggsave(g3, filename = "g3.jpeg", width = 10, height = 5)
 
+
+#########  
+# Ideology
+
+# graph: populism x infractions x ideology
+
+theme_set(theme_bw())
+
+g4 <- ggplot(base,
+             aes(formalnotice, totalaverage, color = lr)) +
+  geom_jitter(width = 0.14)+
+  theme(panel.grid = element_blank()) +
+  scale_y_continuous(breaks=seq(0, 1.2, by = .10)) +
+  scale_x_continuous(breaks=seq(0, 15, by = 2)) +
+  geom_text(aes(label = ref), size = 2.8, hjust=0.65,vjust=-0.4) +
+  labs(y="Level of Populism", 
+       x="Infringement Procedure",
+       color = "Ideology",
+       caption = "Source: GPD and EU") +
+  theme(axis.title = element_text(size = 10.5),
+        axis.text = element_text(size = 9)) +
+  scale_color_manual(labels = c("Left", "Center", "Right"), values = c("blue3", "darkgoldenrod1", "bisque4"))
+        
+
+g4
+
+ggsave(g4, filename = "g4.jpeg", width = 8, height = 5)
+  
+########
+
 # cases: Hungary and Czechia
 
 base %>% 
   filter(country == "Hungary"|
-         country == "Czechia")
-
+           country == "Czechia")
