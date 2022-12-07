@@ -165,7 +165,70 @@ g4 <- ggplot(base,
 g4
 
 ggsave(g4, filename = "g4.jpeg", width = 8, height = 5)
-  
+
+
+
+base <- base %>% 
+  mutate(party = ifelse(party == "Unity", "The New Era Party/Unity", 
+                        ifelse(party == "Liep?ja Party", "Liepaja Party", 
+                               ifelse(party == "Democratic Liberal Party", "National Liberal Party", party))))
+
+
+
+ideology <- base %>% 
+  filter(lr == 1 & party != "Independent") %>% 
+  mutate(ext_r = c(6.9, 6.1, 6.5, 6.1, 6.9, 7.2, 6.1, 5.8, 7.2, 7.9, 8.3, 6.9, 6.9, 5.8, 7.8, 7.9, 5.7, 7.5, 7.1, 7.4, 7.0, 7.1))
+
+
+
+theme_set(theme_bw())
+
+g5 <- ggplot(ideology,
+             aes(ext_r, totalaverage)) +
+  geom_jitter()+
+  theme(panel.grid = element_blank()) +
+  scale_y_continuous(breaks=seq(0, 1.2, by = .10)) +
+  scale_x_continuous(breaks=seq(5.0, 10.0, by = 1.0)) +
+  geom_text(aes(label = ref), size = 2.8, hjust=0.65,vjust=-0.4) +
+  labs(y="Level of Populism", 
+       x="Right Wing",
+       caption = "Source: GPD and CHES") +
+  theme(axis.title = element_text(size = 10.5),
+        axis.text = element_text(size = 9))
+
+
+g5
+
+
+ggsave(g5, filename = "g5.jpeg", width = 8, height = 5)
+
+
+
+theme_set(theme_bw())
+
+g6 <- ggplot(ideology,
+             aes(ext_r, formalnotice)) +
+  geom_jitter(height = 0.12, width = 0.01)+
+  theme(panel.grid = element_blank()) +
+  scale_y_continuous(breaks=seq(0, 15, by = 2)) +
+  scale_x_continuous(breaks=seq(5.0, 10.0, by = 1.0)) +
+  geom_text(aes(label = ref), size = 2.9, hjust= 0.5,vjust=-0.1) +
+  labs(y="Infringement Procedure", 
+       x="Right Wing",
+       caption = "Source: GPD and CHES") +
+  theme(axis.title = element_text(size = 10.5),
+        axis.text = element_text(size = 9))
+
+
+g6
+
+
+ggsave(g6, filename = "g6.jpeg", width = 8, height = 5)
+
+
+
+
+
 ########
 
 # cases: Hungary and Czechia
