@@ -20,7 +20,7 @@ base <- as.data.frame(per_country)
 
 # Adding the columns for the amount of formal notices and the alpha3 codes for the countries.
 
-formalnotice <- c(2,3,3,5,1,3,3,1,4,2,13,0,10,3,2,8,6,10,4,11,9,1,2,2,4,3,7,0,4,6,6,5,8,5,2,1,3,0,0)
+formalnotice <- c(2,3,3,5,1,3,3,1,4,2,13,0,10,3,2,8,6,10,4,11,9,1,2,2,4,3,7,0,4,6,6,5,8,5,2,2,6,0,0)
 
 ref <- c("AUT 1","AUT 2", "AUT 3", "AUT 4", "BGR 1", "BGR 2", "BGR 3", "HRV 1", "HRV 2","CZE 1", "CZE 2", "FRA 1", "FRA 2", "FRA 3", "DEU 1", "DEU 2", "GRC 1", "GRC 2", "HUN 1", "HUN 2", "ITA 1", "ITA 2", "LVA 1", "LVA 2", "LVA 3", "LTU 1", "LTU 2", "NLD 1", "NLD 2", "POL 1", "POL 2", "ROU 1", "ROU 2", "SVK 1", "SVK 2", "SWE 1", "SWE 2", "GBR 1", "GBR 2")
 
@@ -153,6 +153,15 @@ g3 <- ggplot(migration, aes(ref, refugee_stock_migr_perc, fill = year)) +
 g3
 
 ggsave(g3, filename = "g3.jpeg", width = 10, height = 5)
+
+
+# Calculating the difference between the percentage by year
+
+f <- migration %>% 
+  filter(country == "United Kingdom") 
+  
+diff(f$migr_stock_pop_perc)
+  
 
 
 #########  
