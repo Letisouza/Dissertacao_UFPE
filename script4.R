@@ -100,7 +100,7 @@ migration2 <- df2 %>%
          "migr_stock" = V4,
          "migr_stock_pop_perc" = V5,
          "refugee_stock" = V6,
-         "refugee_stock_migr_perc" = V7)
+         "refugee_stock_pop_perc" = V7)
 
 saveRDS(migration2, "migration.rds")
 
@@ -136,7 +136,7 @@ ggsave(g2, filename = "g2.jpeg", width = 10, height = 5)
 
 # Refugee stock as % of the population per country in 2015, 2019 and 2020 (last data available).
 
-g3 <- ggplot(migration, aes(ref, refugee_stock_migr_perc, fill = year)) +
+g3 <- ggplot(migration, aes(ref, refugee_stock_pop_perc, fill = year)) +
   geom_bar(stat = "identity",
            position = position_dodge()) +
   theme(panel.grid = element_blank()) +
@@ -157,11 +157,16 @@ ggsave(g3, filename = "g3.jpeg", width = 10, height = 5)
 
 # Calculating the difference between the percentage by year
 
-f <- migration %>% 
+I <- migration %>% 
   filter(country == "United Kingdom") 
   
-diff(f$migr_stock_pop_perc)
-  
+diff(I$migr_stock_pop_perc)
+
+
+R <- migration %>% 
+  filter(country == "United Kingdom") 
+
+diff(R$refugee_stock_pop_perc)
 
 
 #########  
